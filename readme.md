@@ -1,8 +1,8 @@
 # JavaScript: programando na linguagem da web
 <br>
 
-#### Arquivos e documentos utilizados durante o curso **JavaScript: programando na linguagem da web**, apresentado
-na plataforma Alura. O conteúdo descritivo do curso pode ser acessado pelo link abaixo.
+#### Arquivos e documentos utilizados durante o curso **JavaScript: programando na linguagem da web**, 
+#### apresentado na plataforma Alura. O conteúdo descritivo do curso pode ser acessado pelo link abaixo.
 
 - [JavaScript: programando na linguagem da web](https://cursos.alura.com.br/course/javascript-programando-na-linguagem-web)
 
@@ -14,7 +14,7 @@ na plataforma Alura. O conteúdo descritivo do curso pode ser acessado pelo link
 
 * Idioma: Português
 
-* Carga horária: 10 Horas
+* Carga horária: 20 Horas
 
 <br>
 
