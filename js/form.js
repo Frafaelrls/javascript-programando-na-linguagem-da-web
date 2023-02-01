@@ -45,6 +45,7 @@ function montarTr(paciente){
 
      // Criando uma linha para a tabela(tr) 
      var pacienteTr = document.createElement('tr');
+     pacienteTr.classList.add('paciente');
 
     // Criando as células(td) para a tabela
     var nomeTd = document.createElement('td');
