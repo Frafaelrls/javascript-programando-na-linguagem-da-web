@@ -43,31 +43,28 @@ function obtemPacienteDoFormulario(form){
 
 function montarTr(paciente){
 
-     // Criando uma linha para a tabela(tr) 
-     var pacienteTr = document.createElement('tr');
-     pacienteTr.classList.add('paciente');
-
-    // Criando as células(td) para a tabela
-    var nomeTd = document.createElement('td');
-    var pesoTd = document.createElement('td');
-    var alturaTd = document.createElement('td');
-    var gorduraTd = document.createElement('td');
-    var imcTd = document.createElement('td');
-
-    // Adicionando os dados as células(td)
-    nomeTd.textContent = paciente.nome;
-    pesoTd.textContent = paciente.peso;
-    alturaTd.textContent = paciente.altura;
-    gorduraTd.textContent = paciente.gordura;
-    imcTd.textContent = paciente.imc;
+    // Criando uma linha para a tabela(tr) 
+    var pacienteTr = document.createElement('tr');
+    pacienteTr.classList.add('paciente');
 
     // Adicionando as células(td) a linha(tr)
     // Uma célula é filha de uma linha, será adicionado usando a função appendChild()
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-    pacienteTr.appendChild(imcTd);
+    pacienteTr.appendChild(montaTd(paciente.nome, 'info-nome'));
+    pacienteTr.appendChild(montaTd(paciente.peso, 'info-peso'));
+    pacienteTr.appendChild(montaTd(paciente.altura, 'info-altura'));
+    pacienteTr.appendChild(montaTd(paciente.gordura, 'info-gordura'));
+    pacienteTr.appendChild(montaTd(paciente.imc, 'info-imc'));
      
-     return pacienteTr
+     return pacienteTr;
+}
+
+function montaTd(dado, classe){
+    // Criando as células(td) para a tabela
+    var td = document.createElement('td');
+    // Adicionando os dados as células(td)
+    td.textContent = dado;
+    // Adicionando a classe css
+    td.classList.add(classe);
+    
+    return td;
 }
