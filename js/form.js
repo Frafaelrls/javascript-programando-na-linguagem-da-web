@@ -13,36 +13,12 @@ botaoAdicionar.addEventListener('click', function (event) {
 
     // Selecionando o formulário
     var form = document.querySelector('#form-adiciona');
-
     
     // Extraindo informações do paciente do form
     var paciente = obtemPacienteDoFormulario(form);
-    console.log(paciente);
 
-    // Criando uma linha para a tabela(tr) 
-    var pacienteTr = document.createElement('tr');
-
-    // Criando as células(td) para a tabela
-    var nomeTd = document.createElement('td');
-    var pesoTd = document.createElement('td');
-    var alturaTd = document.createElement('td');
-    var gorduraTd = document.createElement('td');
-    var imcTd = document.createElement('td');
-
-    // Adicionando os dados as células(td)
-    nomeTd.textContent = nome;
-    pesoTd.textContent = peso;
-    alturaTd.textContent = altura;
-    gorduraTd.textContent = gordura;
-    imcTd.textContent = calculaImc(peso, altura);
-
-    // Adicionando as células(td) a linha(tr)
-    // Uma célula é filha de uma linha, será adicionado usando a função appendChild()
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-    pacienteTr.appendChild(imcTd);
+    // ciar a tr e td do paciente
+    var pacienteTr = montarTr(paciente);
 
     // Adicionando a linha(tr) a tabela(tbody)
     // Uma linha é filha de uma tabela, será adicionado usando a função appendChild() 
@@ -63,4 +39,34 @@ function obtemPacienteDoFormulario(form){
     // retorna um objeto
     return paciente;
  
+}
+
+function montarTr(paciente){
+
+     // Criando uma linha para a tabela(tr) 
+     var pacienteTr = document.createElement('tr');
+
+    // Criando as células(td) para a tabela
+    var nomeTd = document.createElement('td');
+    var pesoTd = document.createElement('td');
+    var alturaTd = document.createElement('td');
+    var gorduraTd = document.createElement('td');
+    var imcTd = document.createElement('td');
+
+    // Adicionando os dados as células(td)
+    nomeTd.textContent = paciente.nome;
+    pesoTd.textContent = paciente.peso;
+    alturaTd.textContent = paciente.altura;
+    gorduraTd.textContent = paciente.gordura;
+    imcTd.textContent = paciente.imc;
+
+    // Adicionando as células(td) a linha(tr)
+    // Uma célula é filha de uma linha, será adicionado usando a função appendChild()
+    pacienteTr.appendChild(nomeTd);
+    pacienteTr.appendChild(pesoTd);
+    pacienteTr.appendChild(alturaTd);
+    pacienteTr.appendChild(gorduraTd);
+    pacienteTr.appendChild(imcTd);
+     
+     return pacienteTr
 }
