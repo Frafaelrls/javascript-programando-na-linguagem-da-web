@@ -20,6 +20,12 @@ botaoAdicionar.addEventListener('click', function (event) {
     // ciar a tr e td do paciente
     var pacienteTr = montarTr(paciente);
 
+    // Validando o paciente
+    if(!validaPaciente(paciente)){
+        console.log('Paciênte inválido!');
+        return;
+    }
+
     // Adicionando a linha(tr) a tabela(tbody)
     // Uma linha é filha de uma tabela, será adicionado usando a função appendChild() 
     var tabela = document.querySelector('#tabela-pacientes');
@@ -69,4 +75,12 @@ function montaTd(dado, classe){
     td.classList.add(classe);
     
     return td;
+}
+
+function validaPaciente(paciente){
+    if(validaPeso(paciente.peso)){
+        return true;
+    }else{
+        return false;
+    }
 }
