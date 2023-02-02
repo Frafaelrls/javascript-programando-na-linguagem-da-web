@@ -1,9 +1,9 @@
-var pacientes = document.querySelectorAll('.paciente');
+var tbody = document.querySelector('tbody');
 
-pacientes.forEach(function(paciente){
-    paciente.addEventListener('dblclick', function(){
-        var nome = paciente.querySelector('.info-nome').textContent;
-        var resposta = window.confirm(`Deseja deletar o paciente ${nome}?`);
-        if(resposta) paciente.remove();
-    })
-})
+tbody.addEventListener('dblclick', function(event){
+    var alvoEvento = event.target;
+    var paiDoAlvo = alvoEvento.parentNode; // TR = paciente = remover
+    var nomePaciente = paiDoAlvo.querySelector('.info-nome').textContent;
+    var resposta = window.confirm(`Deseja deletar o(a) paciente ${nomePaciente}?`)
+    if(resposta) paiDoAlvo.remove();
+});
