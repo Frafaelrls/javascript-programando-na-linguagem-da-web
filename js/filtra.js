@@ -10,7 +10,14 @@ campoFiltro.addEventListener('input', function () {
             var tdNome = paciente.querySelector('.info-nome');
             var nome = tdNome.textContent;
 
-            if (nome != this.value) {
+            // Expressão regular
+            // O primeiro parâmetro será o que queremos que ela busque
+            // No segundo parâmetro informamos como será feita a busca
+            // 'i' = ignorar maiúsc./minúsc
+            var expressao = new RegExp(this.value, 'i');
+            
+            // Usando a função test para testar o nome possui ou não uma parte do que foi digitado
+            if (!expressao.test(nome)) {
                 // Ao adicionar a classe utilizar apenas o nome da classe, não utilizar o acessor ponto (.)
                 paciente.classList.add('invisivel');
             } else {
