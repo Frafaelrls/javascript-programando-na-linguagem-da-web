@@ -1,39 +1,67 @@
+// var buscarPacientes = document.querySelector('#buscar-pacientes');
+
+// buscarPacientes.addEventListener('click', function () {
+
+//     // Criando uma nova requisição 
+//     var xhr = new XMLHttpRequest();
+
+//     // A função 'open' abre a requisição com um determinaod endereço. Informamos o tipo, neste caso GET
+//     // O segundo parâmetro será o endereço
+//     xhr.open('GET', 'https://raw.githubusercontent.com/loresgarcia/Pacientes-API/master/pacientes.json');
+
+//     // Adicionando um exento a requisição, neste caso informando que ao receber a requisição
+//     // Deve executar a função
+//     xhr.addEventListener('load', function () {
+//         var erroAjax = document.querySelector('#erro-ajax');
+//         if (xhr.status == 200){
+//             erroAjax.classList.add('invisivel');
+//             var resposta = xhr.responseText;
+
+//             // Convertendo JSON para um objeto javaScript, nste caso para um array
+//             var pacientes = JSON.parse(resposta);
+    
+//             // Adicionando os pacientes na tabela
+//             pacientes.forEach(function (paciente) {
+//                 adicionaPacienteNaTabela(paciente);
+//             });
+//         }else{
+//             erroAjax.classList.remove('invisivel');
+//             console.log(xhr.status);
+//             console.log(xhr.responseText);
+//         }
+       
+
+//     });
+
+//     // Enviando a requisição
+//     xhr.send();
+
+// });
+
+// ---------------------------------------------------
+// Código para coletar os pacientes utilizando o fetch
+// ---------------------------------------------------
+
+
 var buscarPacientes = document.querySelector('#buscar-pacientes');
 
 buscarPacientes.addEventListener('click', function () {
+    var erroAjax = document.querySelector('#erro-ajax');
 
-    // Criando uma nova requisição 
-    var xhr = new XMLHttpRequest();
-
-    // A função 'open' abre a requisição com um determinaod endereço. Informamos o tipo, neste caso GET
-    // O segundo parâmetro será o endereço
-    xhr.open('GET', 'https://raw.githubusercontent.com/loresgarcia/Pacientes-API/master/pacientes.json');
-
-    // Adicionando um exento a requisição, neste caso informando que ao receber a requisição
-    // Deve executar a função
-    xhr.addEventListener('load', function () {
-        var erroAjax = document.querySelector('#erro-ajax');
-        if (xhr.status == 200){
+    fetch('https://raw.githubusercontent.com/loresgarcia/Pacientes-API/master/pacientes.json').then(response => {
+        if (response.ok){
             erroAjax.classList.add('invisivel');
-            var resposta = xhr.responseText;
-
-            // Convertendo JSON para um objeto javaScript, nste caso para um array
-            var pacientes = JSON.parse(resposta);
-    
-            // Adicionando os pacientes na tabela
-            pacientes.forEach(function (paciente) {
-                adicionaPacienteNaTabela(paciente);
-            });
+            return response.json();
         }else{
             erroAjax.classList.remove('invisivel');
-            console.log(xhr.status);
-            console.log(xhr.responseText);
+            console.log(response.status);
+            console.log(response.statusText);
+
         }
-       
-
-    });
-
-    // Enviando a requisição
-    xhr.send();
-
+    }).then(data => {
+        pacientes = data;
+        pacientes.forEach(function (paciente) {
+            adicionaPacienteNaTabela(paciente);
+        });
+    })
 });
