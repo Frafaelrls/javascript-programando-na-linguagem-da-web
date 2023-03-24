@@ -26,6 +26,8 @@ botaoAdicionar.addEventListener('click', function (event) {
         return;
     }
 
+    //montarTrComIndice(paciente);
+
     adicionaPacienteNaTabela(paciente);
 
     form.reset();
@@ -35,6 +37,8 @@ botaoAdicionar.addEventListener('click', function (event) {
     mensagensErros.innerHTML = '';
 
 });
+
+// Função apresentada na aula
 
 function adicionaPacienteNaTabela(paciente) {
     // ciar a tr e td do paciente
@@ -86,6 +90,31 @@ function montarTr(paciente) {
     pacienteTr.appendChild(montaTd(paciente.imc, 'info-imc'));
 
     return pacienteTr;
+}
+
+// Função não apresentada na aula 
+
+function montarTrComIndice(paciente) {
+    let tabela = document.querySelector('#tabela-pacientes');
+
+    // Adiciona uma nova linha no índice 0
+    let linha = tabela.insertRow(0);
+    linha.classList.add('paciente');
+
+    criarCelula(linha, 0, 'info-nome', paciente.nome);
+    criarCelula(linha, 1, 'info-peso', paciente.peso);
+    criarCelula(linha, 2, 'info-altura', paciente.altura);
+    criarCelula(linha, 3, 'info-gordura', paciente.gordura);
+    criarCelula(linha, 4, 'info-imc', paciente.imc);
+}
+
+function criarCelula(linha, indice, classe, valor) {
+    // Criar a célula da linha
+    var celula = linha.insertCell(indice);
+    // Adiciona a classe a célula
+    celula.classList.add(classe);
+    // Adiciona valor a célula
+    celula.innerHTML = valor;
 }
 
 function montaTd(dado, classe) {
